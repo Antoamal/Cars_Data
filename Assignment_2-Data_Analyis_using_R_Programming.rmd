@@ -1,0 +1,82 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+```{r}
+car_new <- read.csv("C:/Users/mwadh/OneDrive/Desktop/Work/car_new.txt")
+require(datasets)
+
+install.packages("ggplot2", version = "2.2.1", repos = "http://cran.us.r-project.org")
+install.packages("tidyverse", repos = "http://cran.us.r-project.org")
+library(ggplot2)
+library(tidyverse)
+ggplot(car_new,aes(x= car_new$maker,y=car_new$mileage)) + geom_point(size=1.2, color="steelblue")
+
+str(car_new)
+print(car_new)
+ls(car_new)
+head(car_new,15)
+summary(car_new)
+sum(is.na(car_new$maker))
+sum(is.na(car_new$model))
+sum(is.na(car_new$mileage))
+sum(is.na(car_new$manufacture_year))
+sum(is.na(car_new$engine_displacement))
+sum(is.na(car_new$engine_power))
+sum(is.na(car_new$body_type))
+sum(is.na(car_new$color_slug))
+sum(is.na(car_new$stk_year))
+sum(is.na(car_new$transmission))
+sum(is.na(car_new$door_count))
+sum(is.na(car_new$seat_count))
+sum(is.na(car_new$fuel_type))
+sum(is.na(car_new$date_created))
+sum(is.na(car_new$date_last_seen))
+sum(is.na(car_new$price_eur))
+
+car_new <- na.omit(car_new)
+View(car_new)
+
+
+colnames(car_new) [10] = "cost_euro"
+
+set.seed(100)
+car_new[sample(1:nrow(car_new), 40), "rad"]
+
+summary(car_new)
+
+summary(car_new$mileage)
+summary(car_new$cost_euro)
+mode(car_new$mileage)
+
+maker <- table(car_new$maker)
+model <- table(car_new$model)
+barplot(maker,model)
+
+data.frame(replicate(6,sample(0:10,105,rep=TRUE)))
+
+
+range(car_new$cost_euro)
+
+scatter.smooth(x=car_new$mileage, y=car_new$engine_displacement, main="mileage ~displacement")
+
+install.packages("dplyr", repos = "http://cran.us.r-project.org")
+install.packages("magrittr", repos = "http://cran.us.r-project.org")
+library(magrittr)
+library(dplyr)
+
+independentvar = car_new$V2
+dependent = as.data.frame(car_new %>% 
+                            select (1:4))
+c("skoda","toyota","opel")
+c("octavia","camry","combo")
+c("398000","390669","355000")
+maker1 <- c("skoda","toyota","opel")
+model1 <- c("octavia","camry","combo")
+mileage1 <- c("398000","390669","355000")
+SelectedCars <- cbind(maker1,model1,mileage1)
+SelectedCars
+
+```
